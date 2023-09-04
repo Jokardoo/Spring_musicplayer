@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Find page</title>
+</head>
+<body>
+    <form th:method="POST" th:action="@{/showMusic}" th:object="${music}">
+        <label for="music">Введите полное название песни</label>
+        <input type="text" id="music" th:field="*{fullName}">
+        <input type="submit" value="Find!">
+    </form>
+
+    <div th:if="${query != null}" >
+        <p th:value="${query}"/>
+        <br>
+        <br>
+        <div th:each="music : ${foundMusic}" th:width="80" th:height="700" >
+
+            <div style="background-color:darkseagreen">
+                <a th:text="${music.getBand()}"/>
+                <br>
+                <a th:text="${music.getSong()}"/>
+                <br>
+                <a download th:href="${music.getDownload_link()}">Download</a>
+                <br>
+
+                <audio controls>
+                    <source th:src="${music.getDownload_link()}" type="audio/mpeg">
+                </audio>
+                <br>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

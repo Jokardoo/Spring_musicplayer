@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+
+  <div>
+      <a>Id: </a>
+      <a th:text="${user.getId()}"/>
+      <br>
+
+      <a>User: </a>
+      <a th:text="${user.getUsername()}"/>
+      <br>
+
+  </div>
+    <a href="/find-page">Поиск музыки</a>
+
+</body>
+</html>
